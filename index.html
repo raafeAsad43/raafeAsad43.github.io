@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raafe Bin Asad - Computer Vision Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .high-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        .high-glass:hover {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+        }
+        .ios-glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 18px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .ios-glass:hover {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .ios-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .ios-btn {
+            background: linear-gradient(90deg, rgba(79, 70, 229, 0.2) 0%, rgba(124, 58, 237, 0.2) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .ios-btn:hover {
+            background: linear-gradient(90deg, rgba(79, 70, 229, 0.3) 0%, rgba(124, 58, 237, 0.3) 100%);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.2);
+        }
+        .ios-skill-badge {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .ios-skill-badge:hover {
+            background: rgba(79, 70, 229, 0.3);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(79, 70, 229, 0.2);
+        }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.5), transparent);
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(79, 70, 229, 0.5);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 8px;
+            top: 20px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #4f46e5;
+        }
+        .hero-image-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+        .hero-image-container:hover {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .text-gradient {
+            background: linear-gradient(90deg, #818cf8 0%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .ios-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .ios-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .blog-card {
+            transition: all 0.3s ease;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Background Particles -->
+    <div id="particles-container" class="fixed inset-0 z-0"></div>
+    
+    <!-- High Glass Background Elements -->
+    <div class="fixed inset-0 z-0 overflow-hidden">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-indigo-500/10 rounded-full filter blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-72 h-72 bg-purple-500/10 rounded-full filter blur-3xl animate-pulse delay-1000"></div>
+        <div class="absolute top-1/3 right-1/3 w-48 h-48 bg-blue-500/10 rounded-full filter blur-3xl animate-pulse delay-500"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 ios-nav py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="text-xl font-semibold text-white tracking-tight">Raafe Bin Asad</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-slate-300 hover:text-white transition font-medium">About</a>
+                <a href="#experience" class="text-slate-300 hover:text-white transition font-medium">Experience</a>
+                <a href="#skills" class="text-slate-300 hover:text-white transition font-medium">Skills</a>
+                <a href="#education" class="text-slate-300 hover:text-white transition font-medium">Education</a>
+                <a href="#publications" class="text-slate-300 hover:text-white transition font-medium">Publications</a>
+                <a href="#blogs" class="text-slate-300 hover:text-white transition font-medium">Blogs</a>
+            </div>
+            <button class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight">
+                    Computer Vision <span class="text-gradient">Research Engineer</span>
+                </h1>
+                <p class="text-lg text-slate-300 leading-relaxed max-w-2xl">
+                    Specializing in developing novel algorithms for visual recognition, with deep expertise in deep learning, model optimization, and full-stack vision pipeline development. Passionate about leveraging cutting-edge research to solve real-world challenges in safety and automation.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="ios-btn text-white px-8 py-4 rounded-xl font-medium text-base">Contact Me</a>
+                    <a href="#experience" class="ios-btn text-white px-8 py-4 rounded-xl font-medium text-base">View Experience</a>
+                </div>
+            </div>
+            <div class="hero-image-container floating-element">
+                <img src="https://placehold.co/400x500/1e293b/4f46e5?text=Raafe+Bin+Asad" alt="Raafe Bin Asad" class="w-full rounded-2xl">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center tracking-tight">About Me</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-slate-300 leading-relaxed">
+                        A Computer Vision Research Engineer with an MS in Artificial Intelligence and a proven track record of taking AI systems from foundational research to large-scale production. Specializes in developing novel algorithms for visual recognition, with deep expertise in deep learning, model optimization, and full-stack vision pipeline development.
+                    </p>
+                    <p class="text-lg text-slate-300 leading-relaxed">
+                        Passionate about leveraging cutting-edge research to solve real-world challenges in safety and automation, with a publication in a peer-reviewed journal.
+                    </p>
+                    <div class="flex flex-wrap gap-6 mt-8 pt-6 border-t border-slate-700/50">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-400 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                            </svg>
+                            <span class="text-slate-300">Karachi, Pakistan</span>
+                        </div>
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-400 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg>
+                            <span class="text-slate-300">+923312622922</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="high-glass p-6 rounded-2xl ios-card">
+                        <div class="text-3xl font-bold text-indigo-400 mb-2">5+</div>
+                        <div class="text-slate-300 font-medium">Years Experience</div>
+                    </div>
+                    <div class="high-glass p-6 rounded-2xl ios-card">
+                        <div class="text-3xl font-bold text-indigo-400 mb-2">25+</div>
+                        <div class="text-slate-300 font-medium">Farms Deployed</div>
+                    </div>
+                    <div class="high-glass p-6 rounded-2xl ios-card">
+                        <div class="text-3xl font-bold text-indigo-400 mb-2">7+</div>
+                        <div class="text-slate-300 font-medium">Countries Served</div>
+                    </div>
+                    <div class="high-glass p-6 rounded-2xl ios-card">
+                        <div class="text-3xl font-bold text-indigo-400 mb-2">1</div>
+                        <div class="text-slate-300 font-medium">Peer Reviewed Publication</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center tracking-tight">Professional Experience</h2>
+            <div class="space-y-12 relative">
+                <div class="absolute left-0 top-0 bottom-0 w-0.5 bg-indigo-500/30 transform translate-x-4 hidden md:block"></div>
+                
+                <!-- POULTA Experience -->
+                <div class="relative ios-glass p-8 rounded-2xl ml-12 md:ml-16 ios-card">
+                    <div class="absolute -left-16 top-8 w-8 h-8 bg-indigo-500 rounded-full border-4 border-slate-900"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Computer Vision Engineer</h3>
+                            <p class="text-indigo-400 font-semibold">POULTA, INC.</p>
+                        </div>
+                        <span class="bg-slate-700/50 text-slate-300 px-4 py-1 rounded-full text-sm mt-2 md:mt-0 font-medium">April 2025 – Present</span>
+                    </div>
+                    <p class="text-slate-300 mb-4 font-medium">Karachi, Pakistan</p>
+                    <ul class="space-y-2 text-slate-400">
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Engineered an end-to-end automated weight estimation system by integrating and fine-tuning open-source Computer Vision models reducing manual weighing labor by 100% on deployed farms</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Deployed, tested, and optimized the weight estimation pipeline across 7+ farms and 30+ individual poultry sheds</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Developed an automated data logging system that captures images, performs analysis, and records key metrics to structured Excel reports every 10 minutes</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Spearheaded the end-to-end development and deployment of a Biosecurity Human-Vehicle access control system</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- VRC Research Associate -->
+                <div class="relative ios-glass p-8 rounded-2xl ml-12 md:ml-16 ios-card">
+                    <div class="absolute -left-16 top-8 w-8 h-8 bg-indigo-500 rounded-full border-4 border-slate-900"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Research Associate</h3>
+                            <p class="text-indigo-400 font-semibold">Virtual Reality Center, NEDUET</p>
+                        </div>
+                        <span class="bg-slate-700/50 text-slate-300 px-4 py-1 rounded-full text-sm mt-2 md:mt-0 font-medium">Aug 2022 – Jan 2025</span>
+                    </div>
+                    <p class="text-slate-300 mb-4 font-medium">Karachi, Pakistan</p>
+                    <ul class="space-y-2 text-slate-400">
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Pioneered an AI-driven defect detection system for concrete infrastructure using Conditional GANs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Engineered high-performance optimizations in GAN models, achieving real-time inference (0.3 seconds average)</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Developed custom evaluation metrics for computer vision applications</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Created a proprietary algorithm for real-time, pixel-level measurement of crack dimensions</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- VRC Research Assistant -->
+                <div class="relative ios-glass p-8 rounded-2xl ml-12 md:ml-16 ios-card">
+                    <div class="absolute -left-16 top-8 w-8 h-8 bg-indigo-500 rounded-full border-4 border-slate-900"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Research Assistant</h3>
+                            <p class="text-indigo-400 font-semibold">Virtual Reality Center, NEDUET</p>
+                        </div>
+                        <span class="bg-slate-700/50 text-slate-300 px-4 py-1 rounded-full text-sm mt-2 md:mt-0 font-medium">Feb 2022 – July 2022</span>
+                    </div>
+                    <p class="text-slate-300 mb-4 font-medium">Karachi, Pakistan</p>
+                    <ul class="space-y-2 text-slate-400">
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Conducted comprehensive research on Structural Health Monitoring (SHM) systems and Bridge Deterioration Models</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Developed immersive Virtual Reality (VR) visualizations for virtual bridge inspections</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Omdena Collaborator -->
+                <div class="relative ios-glass p-8 rounded-2xl ml-12 md:ml-16 ios-card">
+                    <div class="absolute -left-16 top-8 w-8 h-8 bg-indigo-500 rounded-full border-4 border-slate-900"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Collaborator</h3>
+                            <p class="text-indigo-400 font-semibold">Omdena Liverpool Chapter</p>
+                        </div>
+                        <span class="bg-slate-700/50 text-slate-300 px-4 py-1 rounded-full text-sm mt-2 md:mt-0 font-medium">Sep 2022 – Nov 2022</span>
+                    </div>
+                    <p class="text-slate-300 mb-4 font-medium">Remote</p>
+                    <ul class="space-y-2 text-slate-400">
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Implemented and optimized ML algorithms and techniques for data analysis</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Led development of predictive models for road traffic collision severity</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center tracking-tight">Technical Skills</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="high-glass p-6 rounded-2xl ios-card">
+                    <h3 class="text-xl font-bold text-white mb-4 font-semibold">Frameworks & Libraries</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">PyTorch</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">TensorFlow</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Keras</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">TensorRT</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">OpenCV</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Weights & Biases</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">scikit-learn</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">NumPy</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Pandas</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">FastAPI</span>
+                    </div>
+                </div>
+
+                <div class="high-glass p-6 rounded-2xl ios-card">
+                    <h3 class="text-xl font-bold text-white mb-4 font-semibold">Concepts & Methods</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Deep Learning</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Computer Vision</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">GANs</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Transformers</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Diffusion Models</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Model Optimization</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Quantization</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Pruning</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">NAS</span>
+                    </div>
+                </div>
+
+                <div class="high-glass p-6 rounded-2xl ios-card">
+                    <h3 class="text-xl font-bold text-white mb-4 font-semibold">Tools & Platforms</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Docker</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">AWS IoT Core</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Git/GitHub</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">CI/CD</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">Google Earth Engine API</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">ONNX</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">OpenVINO</span>
+                        <span class="ios-skill-badge px-4 py-2 rounded-xl text-sm font-medium">TensorRT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center tracking-tight">Education</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="high-glass p-8 rounded-2xl ios-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">MS Artificial Intelligence</h3>
+                        <span class="bg-indigo-500/30 text-white px-4 py-1 rounded-full text-sm font-medium">2022 - 2024</span>
+                    </div>
+                    <p class="text-indigo-400 font-semibold mb-2">NED University of Engineering & Technology</p>
+                    <p class="text-slate-300 mb-2 font-medium">Karachi, Pakistan</p>
+                    <p class="text-slate-300 font-medium"><strong>CGPA:</strong> 3.89/4.0</p>
+                    <p class="text-slate-400 mt-4 font-medium"><strong>Thesis:</strong> Deep Learning-based Application for Crack Detection, Categorization, and Rating for Concrete Bridges</p>
+                </div>
+
+                <div class="high-glass p-8 rounded-2xl ios-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">BE Software Engineering</h3>
+                        <span class="bg-indigo-500/30 text-white px-4 py-1 rounded-full text-sm font-medium">2016 - 2020</span>
+                    </div>
+                    <p class="text-indigo-400 font-semibold mb-2">NED University of Engineering & Technology</p>
+                    <p class="text-slate-300 mb-2 font-medium">Karachi, Pakistan</p>
+                    <p class="text-slate-300 font-medium"><strong>CGPA:</strong> 3.48/4.0</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications" class="py-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center tracking-tight">Publications</h2>
+            <div class="high-glass p-8 rounded-2xl ios-card">
+                <h3 class="text-xl font-bold text-white mb-4">Enhancing Structural Health Monitoring: Conditional GAN-based Crack Detection in Concrete and Asphalt Surfaces</h3>
+                <p class="text-indigo-400 font-semibold mb-2">Advances in Structural Engineering</p>
+                <p class="text-slate-300 mb-4 font-medium">DOI: <a href="#" class="text-indigo-400 hover:underline">https://doi.org/10.1177/13694332251381215</a></p>
+                <p class="text-slate-400 font-medium">Peer-reviewed journal publication on using Conditional GANs for automated crack detection and categorization in infrastructure.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blogs Section -->
+    <section id="blogs" class="py-20 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center tracking-tight">Latest Blog Posts</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="high-glass p-6 rounded-2xl blog-card">
+                    <h3 class="text-xl font-bold text-white mb-2">Optimizing CNNs for Edge Deployment</h3>
+                    <p class="text-slate-400 mb-4">Exploring techniques for reducing model size while maintaining accuracy for edge computing applications.</p>
+                    <a href="https://dev.to/raafe/optimizing-cnns-for-edge-deployment" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium">Read More →</a>
+                </div>
+                <div class="high-glass p-6 rounded-2xl blog-card">
+                    <h3 class="text-xl font-bold text-white mb-2">GANs in Infrastructure Inspection</h3>
+                    <p class="text-slate-400 mb-4">How Generative Adversarial Networks are revolutionizing structural health monitoring.</p>
+                    <a href="https://dev.to/raafe/gans-in-infrastructure-inspection" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium">Read More →</a>
+                </div>
+                <div class="high-glass p-6 rounded-2xl blog-card">
+                    <h3 class="text-xl font-bold text-white mb-2">Real-time Object Detection Pipeline</h3>
+                    <p class="text-slate-400 mb-4">Building efficient pipelines for real-time computer vision applications in industrial settings.</p>
+                    <a href="https://dev.to/raafe/real-time-object-detection-pipeline" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium">Read More →</a>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="https://dev.to/raafe" target="_blank" class="inline-flex items-center ios-btn px-6 py-3 rounded-xl font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.5c-5.799 0-10.5-4.701-10.5-10.5S6.201 1.5 12 1.5 22.5 6.201 22.5 12 17.799 22.5 12 22.5z"/>
+                        <path d="M12 5c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm0 12.5c-3.036 0-5.5-2.464-5.5-5.5S8.964 6.5 12 6.5s5.5 2.464 5.5 5.5-2.464 5.5-5.5 5.5z"/>
+                        <circle cx="12" cy="12" r="3.5"/>
+                    </svg>
+                    View All Posts on Dev.to
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-8 tracking-tight">Get In Touch</h2>
+            <p class="text-lg text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
+                Interested in working together or have questions about my work? Feel free to reach out!
+            </p>
+            <div class="flex flex-wrap justify-center gap-6">
+                <a href="mailto:raafe@example.com" class="flex items-center ios-btn px-8 py-4 rounded-xl transition font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                    Email
+                </a>
+                <a href="https://linkedin.com/in/raafe" target="_blank" class="flex items-center ios-btn px-8 py-4 rounded-xl transition font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/raafe" target="_blank" class="flex items-center ios-btn px-8 py-4 rounded-xl transition font-medium">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd" />
+                    </svg>
+                    GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 px-6 border-t border-slate-800/50 relative z-10">
+        <div class="max-w-7xl mx-auto text-center text-slate-400 font-medium">
+            <p>&copy; 2026 Raafe Bin Asad. All rights reserved.</p>
+            <div class="mt-4">
+                <a href="https://dev.to/raafe" target="_blank" class="inline-flex items-center text-slate-400 hover:text-indigo-400 transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 22.5c-5.799 0-10.5-4.701-10.5-10.5S6.201 1.5 12 1.5 22.5 6.201 22.5 12 17.799 22.5 12 22.5z"/>
+                        <path d="M12 5c-3.866 0-7 3.134-7 7s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7zm0 12.5c-3.036 0-5.5-2.464-5.5-5.5S8.964 6.5 12 6.5s5.5 2.464 5.5 5.5-2.464 5.5-5.5 5.5z"/>
+                        <circle cx="12" cy="12" r="3.5"/>
+                    </svg>
+                    Follow me on Dev.to for more technical insights
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const container = document.getElementById('particles-container');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 5px and 20px
+                const size = Math.random() * 15 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 5;
+                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                container.appendChild(particle);
+            }
+            
+            // Add floating animation to particles
+            const style = document.createElement('style');
+            style.textContent = `
+                .particle {
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.1);
+                    backdrop-filter: blur(10px);
+                    -webkit-backdrop-filter: blur(10px);
+                    border: 1px solid rgba(255, 255, 255, 0.15);
+                    pointer-events: none;
+                    z-index: -1;
+                }
+                
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>
+
