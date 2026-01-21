@@ -108,20 +108,29 @@
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 24px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
             overflow: hidden;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
         }
         .hero-image-container:hover {
             background: rgba(255, 255, 255, 0.15);
             backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            border: 2px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
             transform: translateY(-5px);
+        }
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
         }
         .floating-element {
             animation: float 6s ease-in-out infinite;
@@ -197,10 +206,11 @@
                 <div class="flex flex-wrap gap-4">
                     <a href="#contact" class="ios-btn text-white px-8 py-4 rounded-xl font-medium text-base">Contact Me</a>
                     <a href="#experience" class="ios-btn text-white px-8 py-4 rounded-xl font-medium text-base">View Experience</a>
+                    <a href="Raafe's Resume.pdf" download class="ios-btn text-white px-8 py-4 rounded-xl font-medium text-base">Download Resume</a>
                 </div>
             </div>
-            <div class="hero-image-container floating-element">
-                <img src="https://placehold.co/400x500/1e293b/4f46e5?text=Raafe+Bin+Asad" alt="Raafe Bin Asad" class="w-full rounded-2xl">
+            <div class="hero-image-container floating-element rotating-image">
+                <img src="dp.jpg" alt="Raafe Bin Asad" class="hero-image">
             </div>
         </div>
     </section>
@@ -212,7 +222,7 @@
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="space-y-6">
                     <p class="text-lg text-slate-300 leading-relaxed">
-                        A Computer Vision Research Engineer with an MS in Artificial Intelligence and a proven track record of taking AI systems from foundational research to large-scale production. Specializes in developing novel algorithms for visual recognition, with deep expertise in deep learning, model optimization, and full-stack vision pipeline development.
+                        A Computer Vision Engineer with an MS in Artificial Intelligence and a proven track record of taking AI systems from foundational research to large-scale production. Specializes in developing novel algorithms for visual recognition, with deep expertise in deep learning, model optimization, and full-stack vision pipeline development.
                     </p>
                     <p class="text-lg text-slate-300 leading-relaxed">
                         Passionate about leveraging cutting-edge research to solve real-world challenges in safety and automation, with a publication in a peer-reviewed journal.
@@ -234,16 +244,12 @@
                 </div>
                 <div class="grid grid-cols-2 gap-6">
                     <div class="high-glass p-6 rounded-2xl ios-card">
-                        <div class="text-3xl font-bold text-indigo-400 mb-2">5+</div>
+                        <div class="text-3xl font-bold text-indigo-400 mb-2">4+</div>
                         <div class="text-slate-300 font-medium">Years Experience</div>
                     </div>
                     <div class="high-glass p-6 rounded-2xl ios-card">
-                        <div class="text-3xl font-bold text-indigo-400 mb-2">25+</div>
+                        <div class="text-3xl font-bold text-indigo-400 mb-2">20+</div>
                         <div class="text-slate-300 font-medium">Farms Deployed</div>
-                    </div>
-                    <div class="high-glass p-6 rounded-2xl ios-card">
-                        <div class="text-3xl font-bold text-indigo-400 mb-2">7+</div>
-                        <div class="text-slate-300 font-medium">Countries Served</div>
                     </div>
                     <div class="high-glass p-6 rounded-2xl ios-card">
                         <div class="text-3xl font-bold text-indigo-400 mb-2">1</div>
@@ -275,19 +281,35 @@
                     <ul class="space-y-2 text-slate-400">
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Engineered an end-to-end automated weight estimation system by integrating and fine-tuning open-source Computer Vision models reducing manual weighing labor by 100% on deployed farms</span>
+                            <span>Engineered an end-to-edge automated weight estimation system by integrating and fine-tuning open-source Computer Vision models reducing manual weighing labour by 100% on deployed farms.</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Deployed, tested, and optimized the weight estimation pipeline across 7+ farms and 30+ individual poultry sheds</span>
+                            <span>Deployed, tested, and optimized the weight estimation pipeline across 7+ farms and 30+ individual poultry sheds, tailoring model coefficients for different camera angles, chicken genders, and breeds (breeder & broiler).</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Developed an automated data logging system that captures images, performs analysis, and records key metrics to structured Excel reports every 10 minutes</span>
+                            <span>Developed an automated data logging system that captures images, performs analysis, and records key metrics to structured Excel reports every 10 minutes, generating over 140 daily data points per shed for operational analysis. </span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Spearheaded the end-to-end development and deployment of a Biosecurity Human-Vehicle access control system</span>
+                            <span>Optimized segmentation and depth estimation models for CPU inference, reducing processing time by approximately 50% and enabling stable deployment on low-resource farm hardware. </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Spearheaded the end-to-end development and deployment of a Biosecurity Human-Vehicle access control system by collaborating with R&D on model development, Hardware team on camera integration, Business stakeholders on requirements, Deployment teams on rollout, and Analytics on data utilization, ensuring seamless alignment from concept to production.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Developed a production-ready facial recognition system from research to deployment, comprising a database encoding pipeline for a farm’s personnel, real-time FaceNet-based recognition, and physical gate control integration, reducing reliance on manual security checks. </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Built robust modules for real-time facial recognition processing on both standard webcams and RTSP/ONVIF video streams from IP cameras, achieving sub-second identification times.  </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Converted and quantized PyTorch models to ONNX, OpenVINO, FP16, and INT8 format for deployment on dedicated edge AI hardware, overcoming memory and processing constraints to run complex models on-device.  </span>
                         </li>
                     </ul>
                 </div>
@@ -306,19 +328,31 @@
                     <ul class="space-y-2 text-slate-400">
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Pioneered an AI-driven defect detection system for concrete infrastructure using Conditional GANs</span>
+                            <span>Pioneered an AI-driven defect detection system for concrete infrastructure using Conditional GANs, incorporating advanced techniques for crack detection, quantification, and categorization.</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Engineered high-performance optimizations in GAN models, achieving real-time inference (0.3 seconds average)</span>
+                            <span>Engineered high-performance optimizations in GAN models, achieving real-time inference (0.3 seconds average), significantly enhancing on-site inspection efficiency.  </span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Developed custom evaluation metrics for computer vision applications</span>
+                            <span>Designed and developed custom evaluation metrics for computer vision applications, encompassing both pixel-level and block-wise segmentation accuracy for comprehensive model assessment. s</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Created a proprietary algorithm for real-time, pixel-level measurement of crack dimensions</span>
+                            <span>Created a proprietary algorithm for real-time, pixel-level measurement of crack dimensions, advancing structural integrity assessments in infrastructure inspections.  </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Constructed an advanced Mask2Image generative AI model, enhancing segmentation capabilities for concrete crack images. </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Engineered a novel hybrid GAN framework for predicting crack propagation under load in concrete structures, pushing the boundaries of predictive maintenance in civil engineering.  </span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-indigo-400 mr-2 mt-1">•</span>
+                            <span>Engineered an advanced crack propagation prediction system using DCGAN-based techniques and latent space manipulation, enhancing structural damage forecasting capabilities. </span>
                         </li>
                     </ul>
                 </div>
@@ -337,11 +371,11 @@
                     <ul class="space-y-2 text-slate-400">
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Conducted comprehensive research on Structural Health Monitoring (SHM) systems and Bridge Deterioration Models</span>
+                            <span>Conducted comprehensive research on Structural Health Monitoring (SHM) systems and Bridge Deterioration Models, contributing to the advancement of predictive maintenance strategies in civil infrastructure.  .</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Developed immersive Virtual Reality (VR) visualizations for virtual bridge inspections</span>
+                            <span>Developed immersive Virtual Reality (VR) visualizations for virtual bridge inspections and damage propagation simulations, enhancing training procedures and risk assessment capabilities in infrastructure management. </span>
                         </li>
                     </ul>
                 </div>
@@ -360,11 +394,11 @@
                     <ul class="space-y-2 text-slate-400">
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Implemented and optimized ML algorithms and techniques for data analysis</span>
+                            <span>Implemented and optimized Traditional ML algorithms and techniques for data analysis.</span>
                         </li>
                         <li class="flex items-start">
                             <span class="text-indigo-400 mr-2 mt-1">•</span>
-                            <span>Led development of predictive models for road traffic collision severity</span>
+                            <span>Collaborated in the development of predictive models for road traffic collision severity.</span>
                         </li>
                     </ul>
                 </div>
@@ -461,7 +495,7 @@
             <div class="high-glass p-8 rounded-2xl ios-card">
                 <h3 class="text-xl font-bold text-white mb-4">Enhancing Structural Health Monitoring: Conditional GAN-based Crack Detection in Concrete and Asphalt Surfaces</h3>
                 <p class="text-indigo-400 font-semibold mb-2">Advances in Structural Engineering</p>
-                <p class="text-slate-300 mb-4 font-medium">DOI: <a href="https://journals.sagepub.com/doi/10.1177/13694332251381215" class="text-indigo-400 hover:underline">https://doi.org/10.1177/13694332251381215</a></p>
+                <p class="text-slate-300 mb-4 font-medium">DOI: <a href="https://doi.org/10.1177/13694332251381215" class="text-indigo-400 hover:underline">https://doi.org/10.1177/13694332251381215</a></p>
                 <p class="text-slate-400 font-medium">Peer-reviewed journal publication on using Conditional GANs for automated crack detection and categorization in infrastructure.</p>
             </div>
         </div>
@@ -473,19 +507,19 @@
             <h2 class="text-3xl md:text-4xl font-bold text-white mb-16 text-center tracking-tight">Latest Blog Posts</h2>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="high-glass p-6 rounded-2xl blog-card">
-                    <h3 class="text-xl font-bold text-white mb-2">Optimizing CNNs for Edge Deployment</h3>
-                    <p class="text-slate-400 mb-4">Exploring techniques for reducing model size while maintaining accuracy for edge computing applications.</p>
-                    <a href="https://dev.to/raafe/optimizing-cnns-for-edge-deployment" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium">Read More →</a>
+                    <h3 class="text-xl font-bold text-white mb-2">A Beginner's Guide to Downloading Large Files from Google Drive with Python.</h3>
+                    <p class="text-slate-400 mb-4">Exploring a technique to for downloading large files from Google Drive with Python.</p>
+                    <a href="https://dev.to/raafe_asad/-a-beginners-guide-to-downloading-large-files-from-google-drive-with-python-4m09" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium">Read More →</a>
                 </div>
                 <div class="high-glass p-6 rounded-2xl blog-card">
-                    <h3 class="text-xl font-bold text-white mb-2">GANs in Infrastructure Inspection</h3>
-                    <p class="text-slate-400 mb-4">How Generative Adversarial Networks are revolutionizing structural health monitoring.</p>
-                    <a href="https://dev.to/raafe/gans-in-infrastructure-inspection" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium">Read More →</a>
+                    <h3 class="text-xl font-bold text-white mb-2">From Python Script to Docker Container: A Beginner's Guide (Windows + WSL2)</h3>
+                    <p class="text-slate-400 mb-4">A beginner's guide to setting up Docker Container in Windows + WSL environment.</p>
+                    <a href="https://dev.to/raafe_asad/from-python-script-to-docker-container-a-beginners-guide-windows-wsl2-c48" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium">Read More →</a>
                 </div>
                 <div class="high-glass p-6 rounded-2xl blog-card">
-                    <h3 class="text-xl font-bold text-white mb-2">Real-time Object Detection Pipeline</h3>
-                    <p class="text-slate-400 mb-4">Building efficient pipelines for real-time computer vision applications in industrial settings.</p>
-                    <a href="https://dev.to/raafe/real-time-object-detection-pipeline" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium">Read More →</a>
+                    <h3 class="text-xl font-bold text-white mb-2">Digital Zoom vs Cropping</h3>
+                    <p class="text-slate-400 mb-4">Debunking the difference between digital zoom and cropping..</p>
+                    <a href="https://dev.to/raafe_asad/digital-zoom-vs-cropping-are-they-the-same-thing-58fh" target="_blank" class="text-indigo-400 hover:text-indigo-300 font-medium">Read More →</a>
                 </div>
             </div>
             <div class="text-center mt-12">
@@ -516,7 +550,7 @@
                     </svg>
                     Email
                 </a>
-                <a href="https://www.linkedin.com/in/raafe-bin-asad-ms/" target="_blank" class="flex items-center ios-btn px-8 py-4 rounded-xl transition font-medium">
+                <a href="https://www.linkedin.com/in/raafe-bin-asad-ms" target="_blank" class="flex items-center ios-btn px-8 py-4 rounded-xl transition font-medium">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z" clip-rule="evenodd" />
                     </svg>
@@ -591,14 +625,10 @@
                     pointer-events: none;
                     z-index: -1;
                 }
-                
             `;
             document.head.appendChild(style);
         });
     </script>
 </body>
 </html>
-
-
-
 
